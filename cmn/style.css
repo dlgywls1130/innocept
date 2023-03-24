@@ -191,62 +191,70 @@ nav{
 
 /* main_sub */
 
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.motion_content {
+    font-size: 16rem;
+    animation: zoom 1s ease-in-out forwards;
+  }
+
 .main_sub {
     position: relative;
 }
 
 .marquee {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-.track {
-    overflow: hidden;
+.marquee .track {
     display: flex;
-    max-width: 100%;
+    width: max-content;
+    animation: marquee 10s linear infinite;
 }
 
-.motion_wrap {
+
+.marquee .track .motion_wrap {
     display: flex;
-    align-items: center;
 }
 
 .marquee li {
-    font-size: 226px;
+    font-size: 13rem;
     font-weight: bold;
     letter-spacing: -4.52px;
     -webkit-text-stroke: 2px #fff;
     color: #010101;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .marquee .text-stroke {
     color: #fff;
 }
 
-@keyframes flowRolling {
+.marquee .highlight {
+    color: #ffc107;
+  }
+
+@keyframes zoom {
+    from {
+      font-size: 16rem;
+    }
+    to {
+      font-size: 13rem;
+    }
+  }
+  
+  @keyframes marquee {
     0% {
-        transform: translateX(0);
+      transform: translateX(0);
     }
     100% {
-        transform: translateX(-100%);
+      transform: translateX(-100%);
     }
-}
-
-@keyframes flowRolling1 {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-/* 반응형 스타일 */
-@media (max-width: 1280px) {
-    .flow_banner .list > li {font-size: 16px;padding: 10px;}
-}
-
-@media (max-width: 767px) {
-    .flow_banner .list > li {font-size: 14px;padding: 5px;}
-}
+  }
